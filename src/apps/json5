@@ -1,0 +1,43 @@
+import { defineApp } from 'gkd-kit/define';
+
+export default defineApp({
+  id: 'com.phoenix.read',
+  name: '红果短剧',
+  groups: [
+    // 1. 开屏广告
+    {
+      name: '跳过开屏广告',
+      key: 1,
+      rules: [
+        {
+          matches: '[text*="跳过"][visibleToUser=true]',
+          action: 'click',
+          delay: 1000,
+        },
+      ],
+    },
+    // 2. 底部商城弹窗（对应第一张截图）
+    {
+      name: '关闭商城好物弹窗',
+      key: 2,
+      rules: [
+        {
+          matches: '[text="不感兴趣"][visibleToUser=true]',
+          action: 'click',
+        },
+      ],
+    },
+    // 3. 全屏插屏广告（对应第二张截图）
+    {
+      name: '跳过全屏插屏广告',
+      key: 3,
+      rules: [
+        {
+          matches: '[text*="上滑继续看短剧"][visibleToUser=true]',
+          action: 'swipeUp',
+          delay: 500,
+        },
+      ],
+    },
+  ],
+});
